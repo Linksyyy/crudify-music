@@ -38,11 +38,11 @@ export default class MusicForm extends Component {
     const { title, artist, url, cover } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="bg-zinc-800 p-6 rounded-lg space-y-4 w-full max-w-md">
-        <h2 className="text-2xl font-bold">{music ? 'Editar Álbum' : 'Adicionar Álbum'}</h2>
+        <h2 className="text-2xl font-bold">{music ? 'Edit Album' : 'Add Album'}</h2>
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-zinc-300">Title</label>
           <input
-          autoFocus
+            autoFocus
             id="title"
             name="title"
             type="text"
@@ -68,7 +68,7 @@ export default class MusicForm extends Component {
           <label htmlFor="url" className="block text-sm font-medium text-zinc-300">URL of video</label>
           <input
             id="url"
-              name="url"
+            name="url"
             type="text"
             value={url}
             onChange={this.handleChange}

@@ -5,10 +5,11 @@ import MusicGrid from './Components/MusicGrid';
 import Player from './Components/Player';
 import MusicView from './Components/MusicView';
 import MusicForm from './Components/MusicForm';
+import MusicBrowser from './Components/MusicBrowser';
 import {
   getMusics, updateMusic, deleteMusic,
   createMusic, addCommentMusic, rateMusic,
-  deleteComment, getComments
+  deleteComment, getComments, searchMusic
 } from './lib/main';
 
 export default class App extends Component {
@@ -42,6 +43,8 @@ export default class App extends Component {
     this.handleAddComment = this.handleAddComment.bind(this);
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
     this.handleRateMusic = this.handleRateMusic.bind(this);
+    this.showBrowser = this.showBrowser.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   toggleSidebar() {
@@ -73,7 +76,7 @@ export default class App extends Component {
   }
 
   handleBack() {
-    this.setState({ currentMusic: null });
+    this.setState({ currentMusic: null, browseMusics: undefined });
   }
 
   showForm(music = null) {
@@ -81,7 +84,7 @@ export default class App extends Component {
   }
 
   hideForm() {
-    this.setState({ isFormVisible: false, editingMusic: null });
+    this.setState({ isFormVisible: false, editingMusic: null, isBrowseVisible: false });
   }
 
   handleSaveMusic(musicToSave) {
@@ -117,6 +120,15 @@ export default class App extends Component {
     this.setState({ musics: getMusics() });
   }
 
+  showBrowser() {
+    this.setState({ isBrowseVisible: true })
+  }
+
+  handleSearch(input) {
+    this.setState({ browseMusics: (searchMusic(input) || []) })
+    this.hideForm()
+  }
+
   render() {
     const { song, browseMusics, isPlaying, currentMusic, musics, isFormVisible, isBrowseVisible, editingMusic, isSidebarVisible } = this.state;
     return (
@@ -128,6 +140,7 @@ export default class App extends Component {
             onMusicClick={this.handleMusicClick}
             onAddMusic={() => this.showForm()}
             onHomeClick={this.handleBack}
+            onBrowseClick={this.showBrowser}
             isSidebarVisible={isSidebarVisible}
           />
           <div className="flex-1 min-w-0 flex flex-col min-h-0 p-6">
@@ -142,8 +155,12 @@ export default class App extends Component {
             )}
 
             {isBrowseVisible && (
-              <div className='fixed inset-0 bg-black/75'>
-                
+              <div className='fixed inset-0 bg-black/75 z-50 flex items-center justify-center'>
+                <MusicBrowser
+                  musics={musics}
+                  onSearch={this.handleSearch}
+                  onCancel={this.hideForm}
+                />
               </div>
             )}
 

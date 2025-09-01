@@ -1,10 +1,20 @@
 import { v7 as genRandomUuid } from "uuid"
 import { generate as genRandomShortId } from "shortid";
+import Fuse from "fuse.js";
 
 const musicsKey = 'musics'
-
+const DEFAULT_FUSE_CONFIG = {
+    minMatchCharLength: 3,
+    findAllMatches: true,
+    threshold: 0.3,
+    ignoreDiacritics: true,
+    shouldSort: true,
+    ignoreFieldNorm: true,
+    keys: ['title', 'artist']
+}
 //import musicsExamples from "./musicExamples.json"
 //localStorage.setItem(musicsKey, JSON.stringify(musicsExamples))
+
 /*{
     id: genRandomUuid(),
     title: `Music ${i}`,
@@ -16,16 +26,14 @@ const musicsKey = 'musics'
 }*/
 
 const findIndexById = (arr, id, index = 0) => {
-    if (!arr[index]) {
-        return -1;
-    }
-
-    if (arr[index].id === id) {
-        return index;
-    }
-
+    if (!arr[index]) return -1;
+    if (arr[index].id === id) return index;
     return findIndexById(arr, id, index + 1);
 };
+const fuzzySearch = (input, array) => {
+    const fuse = new Fuse(array, DEFAULT_FUSE_CONFIG)
+    return fuse.search(input)
+}
 
 export const getMusics = () => {
     return JSON.parse(localStorage.getItem(musicsKey)) || [];
@@ -86,3 +94,8 @@ export const rateMusic = (id, rate) => {
         localStorage.setItem(musicsKey, JSON.stringify(musics));
     }
 }
+
+export const searchMusic = (input) => {
+    return fuzzySearch(input, getMusics()).map(el => el.item)
+}
+
