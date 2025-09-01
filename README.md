@@ -22,11 +22,11 @@ To get the project up and running locally, follow these steps:
    ```bash
    bun install
    ```
-3. Start the development server(run the application on localhost:3000):
+3. Start the development server:
    ```bash
    bun run dev
    ```
-4. Open your browser and navigate to `http://localhost:3000`.
+4. Open your browser and navigate to `http://localhost:3000` ( Its will probaly automatically open ).
 
 ## Technologies Used
 
