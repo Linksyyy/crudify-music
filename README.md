@@ -2,9 +2,13 @@
 
 A simple music management application that allows users to perform CRUD operations on a list of musics.
 
-## Apresentation Video ( in Brazilian Portuguese )
+## Apresentation
 
-[Click here to open the video](https://youtu.be/c0QlW_5672s)
+[Click here to open the apresentation video ( in Brazilian Portuguese ) ](https://youtu.be/c0QlW_5672s)
+
+Here you can acess the site: 
+- Github-pages: https://linksyyy.github.io/crudify-music/
+- Netlify: https://crudify-music.netlify.app/
 
 ## Getting Started
 
