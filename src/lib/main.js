@@ -1,31 +1,6 @@
 import { v7 as genRandomUuid } from "uuid"
 import { generate as genRandomShortId } from "shortid";
 
-const musicsKey = 'musics'
-
-//import musicsExamples from "./musicExamples.json"
-//localStorage.setItem(musicsKey, JSON.stringify(musicsExamples))
-/*{
-    id: genRandomUuid(),
-    title: `Music ${i}`,
-    artist: `Artist${i}`,
-    url: '',
-    cover: '',
-    starRating: 0,
-    comments: [ {id: genRandomShortId(), text: '', date: ...}]
-}*/
-
-const findIndexById = (arr, id, index = 0) => {
-    if (!arr[index]) {
-        return -1;
-    }
-
-    if (arr[index].id === id) {
-        return index;
-    }
-
-    return findIndexById(arr, id, index + 1);
-};
 
 export const getMusics = () => {
     return JSON.parse(localStorage.getItem(musicsKey)) || [];
