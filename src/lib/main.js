@@ -101,4 +101,3 @@ export const rateMusic = (id, rate) => {
 export const searchMusic = (input) => {
     return fuzzySearch(input, getMusics()).map(el => el.item)
 }
-
