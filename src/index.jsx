@@ -8,5 +8,5 @@ setTimeout(() => {
       <App />
     </React.StrictMode>
   );
-}, 800 // delay proposital pq vão ver meu cubo bonitinho sim
+}, 700 // delay proposital pq vão ver meu cubo bonitinho sim
 )
