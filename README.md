@@ -1,1 +1,38 @@
+# Crudify Music
 
+A simple music management application that allows users to perform CRUD operations on a list of musics.
+
+## Apresentation Video ( in Brazilian Portuguese )
+
+[Click here to open the video](https://youtu.be/c0QlW_5672s)
+
+## Getting Started
+
+To get the project up and running locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/linksyyy/crudify-music.git
+   ```
+2. Install the dependencies:
+   ```bash
+   bun install
+   ```
+3. Start the development server(run the application on localhost:3000):
+   ```bash
+   bun run dev
+   ```
+4. Open your browser and navigate to `http://localhost:3000`.
+
+## Technologies Used
+
+- React
+- Tailwind CSS
+- Fuse.js
+- Lucide React
+- React Icons
+- React Player
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
