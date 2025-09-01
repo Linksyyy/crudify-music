@@ -1,7 +1,7 @@
 import { v7 as genRandomUuid } from "uuid"
 import { generate as genRandomShortId } from "shortid";
 
-const musicsKey = 'musics'
+
 
 //import musicsExamples from "./musicExamples.json"
 //localStorage.setItem(musicsKey, JSON.stringify(musicsExamples))
