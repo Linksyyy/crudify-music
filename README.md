@@ -1,6 +1,6 @@
 # Crudify Music
 
-A simple music management application that allows users to perform CRUD operations on a list of musics.
+A Single Page Application (SPA) that allows users to perform CRUD operations on a list of musics.
 
 ## Apresentation
 
