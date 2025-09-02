@@ -6,6 +6,7 @@ import Player from './Components/Player';
 import MusicView from './Components/MusicView';
 import MusicForm from './Components/MusicForm';
 import MusicBrowser from './Components/MusicBrowser';
+import YouTubeSearch from './Components/YouTubeSearch';
 import {
   getMusics, updateMusic, deleteMusic,
   createMusic, addCommentMusic, rateMusic,
@@ -22,6 +23,7 @@ export default class App extends Component {
       editingMusic: null,
       isBrowseVisible: false,
       isFormVisible: false,
+      isSearchVisible: false,
 
       isSidebarVisible: false,
       song: {
@@ -39,12 +41,14 @@ export default class App extends Component {
     this.handleSaveMusic = this.handleSaveMusic.bind(this);
     this.handleDeleteMusic = this.handleDeleteMusic.bind(this);
     this.showForm = this.showForm.bind(this);
-    this.hideForm = this.hideForm.bind(this);
+    this.hideForms = this.hideForms.bind(this);
     this.handleAddComment = this.handleAddComment.bind(this);
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
     this.handleRateMusic = this.handleRateMusic.bind(this);
-    this.showBrowser = this.showBrowser.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    this.showBrowser = this.showBrowser.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.showSearch = this.showSearch.bind(this);
+    this.handleMusicAdd = this.handleMusicAdd.bind(this);
   }
 
   toggleSidebar() {
@@ -83,19 +87,26 @@ export default class App extends Component {
     this.setState({ isFormVisible: true, editingMusic: music });
   }
 
-  hideForm() {
-    this.setState({ isFormVisible: false, editingMusic: null, isBrowseVisible: false });
+  hideForms() {
+    this.setState({ isFormVisible: false, editingMusic: null, isBrowseVisible: false, isSearchVisible: false });
+  }
+
+  showSearch() {
+    this.setState({ isSearchVisible: true });
+  }
+
+  handleMusicAdd(musicToAdd) {
+    createMusic(musicToAdd.title, musicToAdd.artist, musicToAdd.url, musicToAdd.cover);
+    this.setState({ musics: getMusics() });
+    this.hideForms();
   }
 
   handleSaveMusic(musicToSave) {
     if (musicToSave.id) { // Update
       updateMusic(musicToSave.id, musicToSave.title, musicToSave.artist, musicToSave.url, musicToSave.cover)
       this.setState({ musics: getMusics() })
-    } else { // Create
-      createMusic(musicToSave.title, musicToSave.artist, musicToSave.url, musicToSave.cover);
-      this.setState({ musics: getMusics() })
     }
-    this.hideForm();
+    this.hideForms();
   }
 
   handleDeleteMusic(musicId) {
@@ -126,11 +137,11 @@ export default class App extends Component {
 
   handleSearch(input) {
     this.setState({ browseMusics: (searchMusic(input) || []) })
-    this.hideForm()
+    this.hideForms()
   }
 
   render() {
-    const { song, browseMusics, isPlaying, currentMusic, musics, isFormVisible, isBrowseVisible, editingMusic, isSidebarVisible } = this.state;
+    const { song, browseMusics, isPlaying, currentMusic, musics, isFormVisible, isBrowseVisible, editingMusic, isSidebarVisible, isSearchVisible } = this.state;
     return (
       <div className="fixed inset-0 bg-primary text-white flex flex-col">
         <Header onToggleSidebar={this.toggleSidebar} />
@@ -138,18 +149,28 @@ export default class App extends Component {
           <Sidebar
             musics={musics}
             onMusicClick={this.handleMusicClick}
-            onAddMusic={() => this.showForm()}
+            onAddMusic={this.showSearch}
             onHomeClick={this.handleBack}
             onBrowseClick={this.showBrowser}
             isSidebarVisible={isSidebarVisible}
           />
           <div className="flex-1 min-w-0 flex flex-col min-h-0 p-6">
+            {isSearchVisible && (
+
+              <div className="fixed inset-0 bg-black/80 flex items-start justify-center z-50 pt-20">
+                <YouTubeSearch
+                  onCancel={this.hideForms}
+                  onMusicAdd={this.handleMusicAdd}
+                />
+              </div>
+            )}
+
             {isFormVisible && (
               <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
                 <MusicForm
                   music={editingMusic}
                   onSave={this.handleSaveMusic}
-                  onCancel={this.hideForm}
+                  onCancel={this.hideForms}
                 />
               </div>
             )}
@@ -159,7 +180,7 @@ export default class App extends Component {
                 <MusicBrowser
                   musics={musics}
                   onSearch={this.handleSearch}
-                  onCancel={this.hideForm}
+                  onCancel={this.hideForms}
                 />
               </div>
             )}
@@ -180,7 +201,7 @@ export default class App extends Component {
                 onPlaySong={this.playSong}
                 onEdit={this.showForm}
                 onDelete={this.handleDeleteMusic}
-                onAddMusic={() => this.showForm()}
+                onAddMusic={this.showSearch}
               />
             )}
           </div>

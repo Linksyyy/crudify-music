@@ -20,7 +20,7 @@ export default function MusicGrid({ musics, onMusicClick, onPlaySong, onEdit, on
               <img 
                 src={music.cover || 'https://via.placeholder.com/150'}
                 alt=""
-                className="w-full h-64 object-cover rounded mb-2 cursor-pointer" 
+                className="w-full h-55 object-cover rounded mb-2 cursor-pointer" 
                 onClick={() => onMusicClick(music)}
               />
               <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
