@@ -1,10 +1,14 @@
 # Crudify Music
 
-A simple music management application that allows users to perform CRUD operations on a list of musics.
+A Single Page Application (SPA) that allows users to perform CRUD operations on a list of musics.
 
-## Apresentation Video ( in Brazilian Portuguese )
+## Apresentation
 
-[Click here to open the video](https://youtu.be/c0QlW_5672s)
+[Click here to open the apresentation video ( in Brazilian Portuguese ) ](https://youtu.be/c0QlW_5672s)
+
+Here you can acess the site: 
+- Github-pages: https://linksyyy.github.io/crudify-music/
+- Netlify: https://crudify-music.netlify.app/
 
 ## Getting Started
 
@@ -18,11 +22,11 @@ To get the project up and running locally, follow these steps:
    ```bash
    bun install
    ```
-3. Start the development server(run the application on localhost:3000):
+3. Start the development server:
    ```bash
    bun run dev
    ```
-4. Open your browser and navigate to `http://localhost:3000`.
+4. Open your browser and navigate to `http://localhost:3000` ( Its will probaly automatically open ).
 
 ## Technologies Used
 
