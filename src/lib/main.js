@@ -77,7 +77,7 @@ export const addCommentMusic = (musicId, comment) => {
     const date = new Date()
     if (musicIndex !== -1) {
         musics[musicIndex].comments = [...musics[musicIndex].comments,
-        { id: genRandomShortId(), text: comment, date: date.toLocaleString("en-GB", { timeZone: "UTC" }) }]
+        { id: genRandomShortId(), text: comment, date: date.toLocaleString("pt-BR", { timeZone: "UTC" }) }]
         localStorage.setItem(musicsKey, JSON.stringify(musics));
     }
 }
