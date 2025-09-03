@@ -29,6 +29,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Debugenv
+        env:
+          REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
+        run: |
+          echo "Key length: $(echo -n $REACT_APP_YOUTUBE_API_KEY | wc -c)"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Bun
