@@ -1,4 +1,5 @@
 # Crudify Music
+[![Netlify Status](https://api.netlify.com/api/v1/badges/32a47ece-45c4-4588-9747-8165441fd7cf/deploy-status)](https://app.netlify.com/projects/crudify-music/deploys)
 
 A Single Page Application (SPA) that allows users to perform CRUD operations on a list of musics.
 
