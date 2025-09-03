@@ -1,6 +1,5 @@
 import { v7 as genRandomUuid } from "uuid"
 import { generate as genRandomShortId } from "shortid";
-import musicsExamples from "./musicExamples.json"
 import Fuse from "fuse.js";
 
 const musicsKey = 'musics'
@@ -12,10 +11,6 @@ const DEFAULT_FUSE_CONFIG = {
     shouldSort: true,
     ignoreFieldNorm: true,
     keys: ['title', 'artist']
-}
-
-if (!localStorage.getItem(musicsKey)) {
-    localStorage.setItem(musicsKey, JSON.stringify(musicsExamples))
 }
 
 /*{
