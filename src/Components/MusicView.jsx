@@ -1,12 +1,22 @@
-import { ChevronLeft } from 'lucide-react';
-import StarRating from './StarRating';
-import CommentSection from './CommentSection';
-import ReactPlayer from 'react-player';
+import { ChevronLeft } from "lucide-react";
+import StarRating from "./StarRating";
+import CommentSection from "./CommentSection";
+import ReactPlayer from "react-player";
 
-export default function MusicView({ music, onBack, onGetComments, onAddComment, onRateMusic, onDeleteComment }) {
+export default function MusicView({
+  music,
+  onBack,
+  onGetComments,
+  onAddComment,
+  onRateMusic,
+  onDeleteComment,
+}) {
   return (
-    <div className='overflow-y-auto'>
-      <button onClick={onBack} className="mb-4 flex items-center gap-2 text-zinc-400 hover:text-zinc-100">
+    <div className="overflow-y-auto">
+      <button
+        onClick={onBack}
+        className="mb-4 flex items-center gap-2 text-zinc-400 hover:text-zinc-100"
+      >
         <ChevronLeft />
         Back
       </button>
@@ -14,10 +24,12 @@ export default function MusicView({ music, onBack, onGetComments, onAddComment, 
         <div className="w-full md:w-1/3 flex flex-col">
           <h1 className="text-4xl font-bold">{music.title}</h1>
           <h2 className="text-xl text-zinc-400 mb-4">{music.artist}</h2>
-          <div className='mt-auto'>
+          <div className="mt-auto">
             <StarRating
               initialRating={music.starRating}
-              onRate={(rating) => onRateMusic(music.id, rating)}
+              onRate={(rating) => {
+                onRateMusic(music.id, rating);
+              }}
             />
           </div>
         </div>
@@ -33,7 +45,7 @@ export default function MusicView({ music, onBack, onGetComments, onAddComment, 
           initialComments={music.comments}
           onAddComment={onAddComment}
           onDeleteComment={onDeleteComment}
-          onGetComments={onGetComments}
+          onGetComments={() => onGetComments(music.id)}
         />
       </div>
     </div>
