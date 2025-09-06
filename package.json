@@ -19,14 +19,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PUBLIC_URL=. react-scripts start",
-    "build": "react-scripts build",
-    "build:css": "bunx tailwindcss -i ./public/index.css -m -o ./public/tailwind.css --watch",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "bun run build",
-    "deploy": "gh-pages -d build",
-    "dev": "bun run build:css & bun run start"
+    "dev": "next dev --turbopack",
+    "start": "next start",
+    "build": "next build"
   },
   "eslintConfig": {
     "extends": [
