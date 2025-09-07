@@ -19,7 +19,7 @@ export default function Sidebar({
   return (
     <aside className={sidebarClasses}>
       <nav className="space-y-2">
-        <Link href='/'>
+        <Link href="/">
           <button
             onClick={onHomeClick}
             className="hover:underline cursor-pointer bg-secondary p-2 my-2 hover:bg-tertiary rounded-full px-18 flex items-center w-full gap-2 transition-transform duration-200 hover:scale-105"
@@ -49,8 +49,9 @@ export default function Sidebar({
         </div>
 
         <div className="space-y-1 overflow-y-auto flex-grow [perspective:800px]">
-          {musics.map((music) => (
+          {musics.map((music, index) => (
             <div
+              key={index}
               onClick={(e) => {
                 e.preventDefault();
                 onMusicClick(music);

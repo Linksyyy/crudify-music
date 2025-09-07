@@ -15,6 +15,7 @@ export default function MainView() {
     handleAddComment,
     handleDeleteComment,
     handleRateMusic,
+    getComments,
   } = useMusic();
   const params = useParams();
 
@@ -39,6 +40,7 @@ export default function MainView() {
       onAddComment={handleAddComment}
       onDeleteComment={handleDeleteComment}
       onRate={handleRateMusic}
+      onGetComments={getComments}
       onBack={handleBack}
     />
   );

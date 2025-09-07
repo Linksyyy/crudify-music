@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import {
   getMusics,
   updateMusic,
@@ -9,13 +9,14 @@ import {
   addCommentMusic,
   rateMusic,
   deleteComment,
+  getComments,
   searchMusic,
 } from "../lib/main";
 
 const MusicContext = createContext();
 
 export function MusicProvider({ children }) {
-  const [musics, setMusics] = useState(getMusics());
+  const [musics, setMusics] = useState([]);
   const [browseMusics, setBrowseMusics] = useState(undefined);
   const [currentMusic, setCurrentMusic] = useState(null);
   const [editingMusic, setEditingMusic] = useState(null);
@@ -29,6 +30,10 @@ export function MusicProvider({ children }) {
     title: "No song selected",
     artist: "---",
   });
+
+  useEffect(() => {
+    setMusics(getMusics());
+  }, []);
 
   function toggleSidebar() {
     setIsSideBarVisible(!isSidebarVisible);
@@ -150,6 +155,7 @@ export function MusicProvider({ children }) {
     showBrowser,
     handleSearch,
     setCurrentMusic,
+    getComments,
   };
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;
