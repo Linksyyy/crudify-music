@@ -1,2 +1,2 @@
-[build]
-  command = "bun run build"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
