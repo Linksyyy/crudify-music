@@ -2,6 +2,7 @@ import { FaHome } from "react-icons/fa";
 import { TbZoom } from "react-icons/tb";
 import { CgAlbum } from "react-icons/cg";
 import { PlusCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Sidebar({
   musics,
@@ -18,12 +19,14 @@ export default function Sidebar({
   return (
     <aside className={sidebarClasses}>
       <nav className="space-y-2">
-        <button
-          onClick={onHomeClick}
-          className="hover:underline cursor-pointer bg-secondary p-2 my-2 hover:bg-tertiary rounded-full px-18 flex items-center w-full gap-2 transition-transform duration-200 hover:scale-105"
-        >
-          <FaHome /> Home
-        </button>
+        <Link href='/'>
+          <button
+            onClick={onHomeClick}
+            className="hover:underline cursor-pointer bg-secondary p-2 my-2 hover:bg-tertiary rounded-full px-18 flex items-center w-full gap-2 transition-transform duration-200 hover:scale-105"
+          >
+            <FaHome /> Home
+          </button>
+        </Link>
         <button
           onClick={onBrowseClick}
           className="hover:underline cursor-pointer bg-secondary p-2 my-2 hover:bg-tertiary rounded-full px-18 flex items-center w-full gap-2 transition-transform duration-200 hover:scale-105"

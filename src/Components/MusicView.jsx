@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import StarRating from "./StarRating";
 import CommentSection from "./CommentSection";
 import ReactPlayer from "react-player";
+import Link from "next/link";
 
 export default function MusicView({
   music,
@@ -13,13 +14,15 @@ export default function MusicView({
 }) {
   return (
     <div className="overflow-y-auto">
-      <button
-        onClick={onBack}
-        className="mb-4 flex items-center gap-2 text-zinc-400 hover:text-zinc-100"
-      >
-        <ChevronLeft />
-        Back
-      </button>
+      <Link href='/'> 
+        <button
+          onClick={onBack}
+          className="mb-4 flex items-center gap-2 text-zinc-400 hover:text-zinc-100"
+        >
+          <ChevronLeft />
+          Back
+        </button>
+      </Link>
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-1/3 flex flex-col">
           <h1 className="text-4xl font-bold">{music.title}</h1>
