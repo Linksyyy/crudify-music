@@ -1,15 +1,13 @@
 # Crudify Music
 [![Netlify Status](https://api.netlify.com/api/v1/badges/32a47ece-45c4-4588-9747-8165441fd7cf/deploy-status)](https://app.netlify.com/projects/crudify-music/deploys)
-[![pages-build-deployment](https://github.com/Linksyyy/crudify-music/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Linksyyy/crudify-music/actions/workflows/pages/pages-build-deployment)
 
-A Single Page Application (SPA) that allows users to perform CRUD operations on a list of musics.
+A Next.js application that allows users to perform CRUD operations on a list of musics.
 
 ## Apresentation
 
 [Click here to open the apresentation video ( in Brazilian Portuguese ) ](https://youtu.be/c0QlW_5672s)
 
 Here you can acess the site: 
-- Github-pages: https://linksyyy.github.io/crudify-music/
 - Netlify: https://crudify-music.netlify.app/
 
 ## Getting Started
@@ -28,10 +26,11 @@ To get the project up and running locally, follow these steps:
    ```bash
    bun run dev
    ```
-4. Open your browser and navigate to `http://localhost:3000` ( Its will probaly automatically open ).
+4. Open your browser and navigate to `http://localhost:3000` ( It will probaly automatically open ).
 
 ## Technologies Used
 
+- Next.js
 - React
 - Tailwind CSS
 - Fuse.js
