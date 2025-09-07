@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": ".",
   "dependencies": {
+    "@snowpack/plugin-vue": "^2.6.2",
     "@tailwindcss/postcss": "^4.1.13",
     "caniuse-lite": "^1.0.30001736",
     "fuse.js": "^7.1.0",
