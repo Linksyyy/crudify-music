@@ -1,6 +1,6 @@
 'use client';
 import MusicGrid from "./MusicGrid";
-import { useMusic } from "./MusicProvider";
+import { useMusic } from "./ContextProvider";
 
 export default function MusicGridClient() {
   const {

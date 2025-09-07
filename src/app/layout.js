@@ -1,6 +1,6 @@
 'use client';
 import "./global.css";
-import { MusicProvider, useMusic } from "../Components/MusicProvider";
+import { ContextProvider, useMusic } from "../Components/ContextProvider";
 import Header from "../Components/Header";
 import Sidebar from "../Components/SideBar";
 import MusicForm from "../Components/MusicForm";
@@ -80,9 +80,9 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <MusicProvider>
+        <ContextProvider>
           <AppUI>{children}</AppUI>
-        </MusicProvider>
+        </ContextProvider>
       </body>
     </html>
   );

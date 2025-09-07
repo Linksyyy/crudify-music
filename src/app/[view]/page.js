@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import MusicView from "../../Components/MusicView";
-import { useMusic } from "../../Components/MusicProvider";
+import { useMusic } from "../../Components/ContextProvider";
 
 export default function MainView() {
   const {

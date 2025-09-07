@@ -13,9 +13,9 @@ import {
   searchMusic,
 } from "../lib/main";
 
-const MusicContext = createContext();
+const Context = createContext();
 
-export function MusicProvider({ children }) {
+export function ContextProvider({ children }) {
   const [musics, setMusics] = useState([]);
   const [browseMusics, setBrowseMusics] = useState(undefined);
   const [currentMusic, setCurrentMusic] = useState(null);
@@ -158,9 +158,9 @@ export function MusicProvider({ children }) {
     getComments,
   };
 
-  return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;
+  return <Context value={value}>{children}</Context>;
 }
 
 export function useMusic() {
-  return useContext(MusicContext);
+  return useContext(Context);
 }
