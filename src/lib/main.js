@@ -1,5 +1,5 @@
-import { v7 as genRandomUuid } from "uuid";
-import { generate as genRandomShortId } from "shortid";
+import { generateSnowflakeId } from "@grkndev/snowflakeid";
+import { generate as genShortId } from "shortid";
 import Fuse from "fuse.js";
 
 const musicsKey = "musics";
@@ -14,13 +14,7 @@ const DEFAULT_FUSE_CONFIG = {
 };
 
 /*{
-    id: genRandomUuid(),
-    title: `Music ${i}`,
-    artist: `Artist${i}`,
-    url: '',
-    cover: '',
-    starRating: 0,
-    comments: [ {id: genRandomShortId(), text: '', date: ...}]
+    id:,title,artist,url,cover,starRating,comments:[{id, text, date}, ...]
 }*/
 
 const findIndexById = (arr, id, index = 0) => {
@@ -72,7 +66,7 @@ export const createMusic = (title, artist, url, cover = "") => {
     JSON.stringify([
       ...getMusics(),
       {
-        id: genRandomUuid(),
+        id: generateSnowflakeId(),
         title,
         artist,
         url,
@@ -97,7 +91,7 @@ export const addCommentMusic = (musicId, comment) => {
     musics[musicIndex].comments = [
       ...musics[musicIndex].comments,
       {
-        id: genRandomShortId(),
+        id: genShortId(),
         text: comment,
         date: date.toLocaleString("pt-BR", { timeZone: "UTC" }),
       },
